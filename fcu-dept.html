@@ -1,0 +1,61 @@
+<html>
+<body>
+
+<p>請選擇學院</p>
+<select id="college-list" onchange ="changeDept()">
+
+</select>		
+
+<p>當你選擇學院後,下列選單會列出屬於該學院的所有科系</p>
+
+<select id="dept-list">
+
+</select>
+
+<script>
+var college = ["商學院", "工學院", "建設學院", "資電學院"];
+var dept1 = ["會計系", "統計系", "經濟系"];
+var dept2 = ["化工系", "航太系", "機械系"];
+var dept3 = ["土木工程學系", "水利工程與資源保育學系", "都市計畫與空間資訊學系"];
+var dept4 = ["資訊工程學系", "電機工程學系", " 電子工程學系"];
+var collegeElm = document.getElementById("college-list");
+var deptElm = document.getElementById("dept-list");
+
+updateData(collegeElm,college);
+updateData(deptElm,dept1);
+
+function changeDept(){
+	var selIndex = collegeElm.options[collegeElm.selectedIndex].value;
+	switch(selIndex){
+		case "0":
+			updateData(deptElm,dept1)
+			break;
+		case "1":
+			updateData(deptElm,dept2)
+			break;
+		case "2":
+			updateData(deptElm,dept3)
+			break;
+		case "3":
+			updateData(deptElm,dept4)
+			break;
+		default:
+			console.log("NOT ACCEPT");
+	}
+}
+
+function updateData(selElm, data) {
+	var options ="";	
+	
+	for(var i=0;i<data.length;i++){
+		options = options + '<option value="'+i+'">' + data[i] + '</option>';
+	}
+	selElm.innerHTML = options;
+}
+
+
+</script>
+
+
+</body>
+</html>
